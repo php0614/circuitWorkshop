@@ -5,6 +5,8 @@ Electrical Constructivism: Reasoning through analog synthesizer circuits Worksho
 Copyright - Philip Liu 류필립, Hoonida Kim 후니다킴.
 Seoul, Korea, 2025
 
+___
+
 Max(Gen) 및 Icircuit 예제
 
 
