@@ -1,0 +1,102 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 9,
+			"minor" : 0,
+			"revision" : 0,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 389.0, 202.0, 1060.0, 794.0 ],
+		"gridsize" : [ 15.0, 15.0 ],
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 819.0, 696.0, 173.0, 75.0 ],
+					"text" : "invRC\nif invRC is 1000,\nit means 1000 v * input voltage will be acculumated to capacitor in 1 second."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 766.0, 696.0, 35.0, 22.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "//Philip Liu\r\n\r\n//Integrator circuit with Op-amp simulation using Gen\r\n//with leaky resistor (dy reset function)\r\n\r\n//For 2025 Workshop.\r\n\r\nParam r(1000);     // resistance in ohms\r\nParam c(1);     // capacitance in micro farads(uF)\r\n\r\nHistory y(0);  // one sample delayed feedback(for digital calc)\r\nHistory invRC(0); // Compute 1 / (R * C)\r\nHistory dy(0);  // 1 sample delayed Delta Y)\r\nHistory dy2(0); // 2 sample delayed Delta Y) \r\n\r\ninvRC = 1/(r*c*1e-6); // acculumate eletrons to the capacitor\r\n\r\nif(dy >= 0 && dy2 < 0)\r\n{\r\n\t//leaky resistor\r\n\tdy = 0;\r\n}  \r\n else if (dy <= 0 && dy2 > 0)\r\n { \r\n\t//leaky resistor\r\n \tdy = 0;\r\n }\r\n\r\n//Delay 1 sample delayed Delta Y 1 sample more again\r\ndy2 = dy;\r\n\r\nsqrDirection = 0;\r\n\r\n//eleminate amplitude from the square, only extract the direction\r\n//if(in1 > 0){\r\n//\tsqrDirection = 1;\r\n//\t} else if(in1 < 0) {\r\n//\t\t sqrDirection = -1;\r\n//\t\t} else if (in1 == 0){\r\n//\t\t\tsqrDirection = 0;\r\n//\t\t\t}\r\n\t\r\ndy = -1 * invRC * in1;      // -Vin / (RC)\r\n\r\n// Output calculation\r\ny_next = y + (dy * 1/48000); // Euler integration step\r\n//1/44100 or 1/48000 or anything. the denominator should be the current sample rate\r\n\t\t\r\nif(y_next > 12){\r\n\ty_next = 12;\r\n\t} else if (y_next < -12) {\r\n\t\ty_next = -12;\r\n\t\t}\r\n\t\t\r\n\r\ny = y_next;// History for integrator state\r\n\r\nout1 = y;\r\nout2 = invRC;",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 12.0,
+					"id" : "obj-5",
+					"maxclass" : "codebox",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 78.0, 50.0, 707.0, 617.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 78.0, 7.0, 28.0, 22.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 78.0, 696.0, 35.0, 22.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-5", 1 ]
+				}
+
+			}
+ ],
+		"originid" : "pat-9"
+	}
+
+}
