@@ -19,9 +19,9 @@ Max_Gen_IntegratorCircuitSimulation:
 Icircuit_OscillatorSimulation
   LED.icircuit: Two LEDs with a resistor in front of each, two compare currents
   
-  SquareAndTriangleOscillator: A Comparator and an Integrator pair
+  SquareAndTriangleOscillator.icircuit: A Comparator and an Integrator pair
   
-  VoltageControlledOscillator-TriSqr: Voltage controlled version of the above using NPN transistor
+  VoltageControlledOscillator-TriSqr.icircuit: Voltage controlled version of the above using NPN transistor
 
   
 
