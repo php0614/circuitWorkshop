@@ -11,19 +11,27 @@ Max(Gen) 및 Icircuit 예제
 
 
 
-Max_Gen_IntegratorCircuitSimulation: 
+**Max_Gen_IntegratorCircuitSimulation:**  
 
+```
   Integrator_Gen.maxpat AND Integrator.gendsp  
-  
+
   -> Integrator circuit simulation using Gen. It converts square inputs to triangle waveform just like the integrator circuit using op-amp.
+```
 
 
-Icircuit_OscillatorSimulation
-  LED.icircuit: Two LEDs with a resistor in front of each, two compare currents
+
+**Icircuit_OscillatorSimulation**
+ ```
+  LED.icircuit
+  -> Two LEDs with a resistor in front of each, two compare currents
   
-  SquareAndTriangleOscillator.icircuit: A Comparator and an Integrator pair
+  SquareAndTriangleOscillator.icircuit
+  -> A Comparator and an Integrator pair
   
-  VoltageControlledOscillator-TriSqr.icircuit: Voltage controlled version of the above using NPN transistor
+  VoltageControlledOscillator-TriSqr.icircuit 
+  ->Voltage controlled version of the above using NPN transistor
+```
 
   
 
