@@ -2,7 +2,7 @@
 
 Electrical Constructivism: Reasoning through analog synthesizer circuits Workshop 
 
-Philip Liu 류필립, Hoonida Kim 후니다킴
+Copyright - Philip Liu 류필립, Hoonida Kim 후니다킴.
 Seoul, Korea, 2025
 
 Max(Gen) 및 Icircuit 예제
