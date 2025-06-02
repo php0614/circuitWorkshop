@@ -16,7 +16,8 @@ Max(Gen) 및 Icircuit 예제
 ```
   Integrator_Gen.maxpat AND Integrator.gendsp  
 
-  -> Integrator circuit simulation using Gen. It converts square inputs to triangle waveform just like the integrator circuit using op-amp.
+  -> Integrator circuit simulation using Gen.
+     It converts square inputs to triangle waveform just like the integrator circuit using op-amp.
 ```
 
 
