@@ -8,6 +8,7 @@ Seoul, Korea, 2025
 Max(Gen) 및 Icircuit 예제
 
 
+
 Max_Gen_IntegratorCircuitSimulation: 
 
   Integrator_Gen.maxpat AND Integrator.gendsp  
@@ -21,6 +22,7 @@ Icircuit_OscillatorSimulation
   SquareAndTriangleOscillator: A Comparator and an Integrator pair
   
   VoltageControlledOscillator-TriSqr: Voltage controlled version of the above using NPN transistor
+
   
 
 본 워크샵 2025년 7월 예정
